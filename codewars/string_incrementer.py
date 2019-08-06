@@ -28,8 +28,10 @@ def string_incrementer(line):
         except ValueError:
             separator += 1
 
-    part_int = int(line[:separator])
-    part_str = a[:-len(str(part_int))]
+    if separator == len(line):
+        return line + "1"
+    part_int = int(line[separator:]) # makes 42 from "0042"
+    part_str = line[:-len(str(part_int))]
     return part_str + str (part_int+1)
 
 
@@ -47,11 +49,11 @@ def string_incrementer(line):
     # return part_str + str(int(part_int) + 1)
     
 
-# print(string_incrementer("foo"))
+print(string_incrementer("foo"))
 # print(string_incrementer("foobar23"))
 # foo0042 -> foo0043
 # foo9 -> foo10
 # foo099 -> foo100
 print(string_incrementer("foo0042"))
-# print(string_incrementer("foo9"))
+print(string_incrementer("foo9"))
 print(string_incrementer("foo099"))
